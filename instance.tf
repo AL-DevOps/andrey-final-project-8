@@ -1,4 +1,4 @@
-resource "aws_instance" "web-server-for-app08" {
+resource "aws_instance" "web-server-for-eks-master" {
   ami           = var.AMIS[var.AWS_REGION]
   instance_type = "t2.large"
 
@@ -13,13 +13,13 @@ resource "aws_instance" "web-server-for-app08" {
 
   # the server name in AWS
   tags = {
-    Name = "andrey-nikol-web-app08"
+    Name = "andrey-eks-master"
   }
 
   # Creating the HOST file for Ansible
    provisioner "local-exec" {
      command = <<EOF
-       echo web1 ansible_host=${aws_instance.web-server-for-app08.private_ip} ansible_connection=ssh ansible_user=ubuntu ansible_become=yes>> hosts
+       echo web1 ansible_host=${aws_instance.web-server-for-eks-master.private_ip} ansible_connection=ssh ansible_user=ubuntu ansible_become=yes>> hosts
        echo [web_servers] >>hosts
        echo web1 >> hosts
      EOF
