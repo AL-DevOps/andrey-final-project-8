@@ -19,9 +19,9 @@ resource "aws_instance" "web-server-for-eks-master" {
   # Creating the HOST file for Ansible
    provisioner "local-exec" {
      command = <<EOF
-       echo web1 ansible_host=${aws_instance.web-server-for-eks-master.private_ip} ansible_connection=ssh ansible_user=ubuntu ansible_become=yes>> hosts
-       echo [web_servers] >>hosts
-       echo web1 >> hosts
+       echo eks-master ansible_host=${aws_instance.web-server-for-eks-master.private_ip} ansible_connection=ssh ansible_user=ubuntu ansible_become=yes>> hosts
+       echo [eks-master-servers] >>hosts
+       echo eks-master >> hosts
      EOF
   }
 
