@@ -1,6 +1,6 @@
 resource "aws_instance" "web-server-for-eks-master" {
   ami           = var.AMIS[var.AWS_REGION]
-  instance_type = "t2.large"
+  instance_type = "t2.micro"
 
   # the VPC subnet  --> andrey-public-sub-1c
   subnet_id = "subnet-0fee2d1c9e08f1996"
