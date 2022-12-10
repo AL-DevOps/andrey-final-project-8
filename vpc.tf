@@ -1,5 +1,6 @@
 variable "region" {
     default = "eu-central-1"
+    description = “AWS region”
 }
 data "aws_availability_zones" "available" {}
 locals {
