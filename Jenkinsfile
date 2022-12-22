@@ -13,7 +13,6 @@ pipeline {
 
         stage('Terraform apply') {
             steps {
-//               sh 'aws --version'     
                 sh 'terraform init'
                 sh 'terraform apply --auto-approve'
             }
@@ -23,7 +22,6 @@ pipeline {
             steps {
                 script {
                     def claster_name_terraform = sh(returnStdout: true, script: "terraform output cluster_name").trim()
- //                   def claster_name_terraform = "education-eks-Bjo6WVPx"
                     println(claster_name_terraform)
                     sh """aws eks --region eu-central-1 update-kubeconfig --name $claster_name_terraform"""
                 }
