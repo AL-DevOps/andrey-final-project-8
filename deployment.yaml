@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: hello-world
-        image: aldevops1/hello-world:25
+        image: aldevops1/hello-world:26
         ports:
         - containerPort: 8080
